@@ -1,0 +1,30 @@
+name: Keep All Hugging Face Spaces Awake
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Every 15 minutes
+  workflow_dispatch:
+
+jobs:
+  ping-hf-spaces:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl All Hugging Face Spaces
+        run: |
+          urls=(
+            "https://rahuljuneja33-crypto-usdt-converter.hf.space"
+            "https://rahuljuneja33-carnegie-mellon-arc-caching-algo.hf.space"
+            "https://rahuljuneja33-financial-report-sentiment-analyzer.hf.space"
+            "https://rahuljuneja33-lexigenai-functional-specification-document.hf.space"
+            "https://rahuljuneja33-lexigenai-transform-fsd-2-userstory-n-testcases.hf.space"
+            "https://rahuljuneja33-lexigen-userstory-generator.hf.space"
+            "https://rahuljuneja33-lexigen-funcspec-datasynthesis.hf.space"
+            "https://rahuljuneja33-lexigen-document-synthesis.hf.space"
+            "https://rahuljuneja33-traditional-similarity-metrics-vs-ai-based-methods.hf.space"
+            "https://rahuljuneja33-string-similarity-calibration-models.hf.space"
+            "https://rahuljuneja33-agenticai-decisiontree-app.hf.space"
+          )
+          for url in "${urls[@]}"; do
+            echo "Pinging $url"
+            curl -s "$url" > /dev/null || echo "Failed to ping $url"
+          done
