@@ -2,9 +2,8 @@ name: Keep All Hugging Face Spaces Awake
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Every 15 minutes
+    - cron: '0 */10 * * *'  # At minute 0, every 10th hour
   workflow_dispatch:
-
 jobs:
   ping-hf-spaces:
     runs-on: ubuntu-latest
